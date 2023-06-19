@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { nanoid } from 'nanoid';
 import { Formik, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
@@ -28,8 +28,8 @@ export default function ContactForm() {
   const dispatch = useDispatch();
   const contacts = useSelector(state => state.contacts);
 
-  const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
+  // const [name, setName] = useState('');
+  // const [number, setNumber] = useState('');
 
   const onSubmitForm = value => {
     const newContact = {
@@ -38,11 +38,11 @@ export default function ContactForm() {
     };
 
     if (checkNameRepeat(value.name)) {
-      alert(`${name} is already in contacts!`);
+      alert(`${value.name} is already in contacts!`);
     } else {
       dispatch(addContact(newContact));
       value.name = ' ';
-      value.namber = ' ';
+      value.number = ' ';
     }
   };
 
@@ -53,7 +53,7 @@ export default function ContactForm() {
 
   return (
     <Formik
-      initialValues={{ name, number }}
+      initialValues={{ name: '', number: '' }}
       onSubmit={onSubmitForm}
       validationSchema={schema}
     >
