@@ -4,18 +4,12 @@ import { deleteContact } from 'redux/contactSlice';
 
 const ContactList = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(state => state.contacts);
+  const contacts = useSelector(state => state.contacts.contacts);
   const filter = useSelector(state => state.filter);
 
   const filteredContacts = contacts.filter(item =>
     item.name.toLocaleLowerCase().includes(filter.toLocaleLowerCase().trim())
   );
-
-  // const layOutFilteredContact = () => {
-  //   return contacts.filter(item =>
-  //     item.name.toLocaleLowerCase().includes(filter.toLocaleLowerCase().trim())
-  //   );
-  // };
 
   return (
     <List>

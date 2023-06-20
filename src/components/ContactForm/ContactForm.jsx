@@ -26,7 +26,7 @@ const schema = Yup.object().shape({
 
 export default function ContactForm() {
   const dispatch = useDispatch();
-  const contacts = useSelector(state => state.contacts);
+  const contacts = useSelector(state => state.contacts.contacts);
 
   // const [name, setName] = useState('');
   // const [number, setNumber] = useState('');
